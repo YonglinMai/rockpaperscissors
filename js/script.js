@@ -1,28 +1,38 @@
 // *************************** YOUR CODE BELOW *******************************
 $("#shoot").click(function(){
-    let pchoice= $("#input").val();
-    $("#userChoice").html(pchoice);
-
-    function computerchoice(number){
-        let number = Math.random();
-        if(number > 0.6){
-            computerResult = "rock";
-        }
-        if(number < 0.6 && number > 0.3){
-            computerResult = "paper";
-        }
-        else{
-            computerResult = "scissors";
-        }
+    let playerChoice = $("#input").val();
+    let randomNum = Math.random();
+    randomNum = randomNum * 10;
+    $("#userChoice").html(playerChoice);
+    let computerChoice = "";
+    if(randomNum > 6){
+        computerResult = "Rock";
+    } else if(randomNum >= 3 && randomNum <= 6){
+        computerResult = "Paper";
+    } else {
+        computerResult = "Scissors";
     }
+    $("#computerChoice").html(computerResult);
+    if (playerChoice == "rock" && computerResult == "Scissors" || 
+        playerChoice == "scissor" && computerResult == "Paper" ||
+        playerChoice == "paper" && computerResult == "Rock" ||
+        playerChoice == "Rock" && computerResult == "Scissors" || 
+        playerChoice == "Scissor" && computerResult == "Paper" ||
+        playerChoice == "Paper" && computerResult == "Rock") {
 
-    let x = computerchoice()
-    $("#computerChoice").html(x);
-    if (pchoice == "rock" && x == "scissors"){
-        $("#result").html("Player win!");
+        $("#result").html("User Wins!");
+    } else if (playerChoice == "rock" && computerResult == "Paper" || 
+                playerChoice == "scissor" && computerResult == "Rock" ||
+                playerChoice == "paper" && computerResult == "Scissor" ||
+                playerChoice == "Rock" && computerResult == "Paper" || 
+                playerChoice == "Scissor" && computerResult == "Rock" ||
+                playerChoice == "Paper" && computerResult == "Scissor") {
+
+        $("#result").html("Computer Wins!");
+    } else {
+        $("#result").html("Draw!");
     }
-
-});
+})
 //******************TEST EARLY AND OFTEN USING console.log() ******************
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
 

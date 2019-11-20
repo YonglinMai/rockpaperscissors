@@ -1,6 +1,6 @@
 // *************************** YOUR CODE BELOW *******************************
 $("#shoot").click(function(){
-    let playerChoice = $("#input").val();
+    let playerChoice = $("#input").val().toLowerCase();
     let randomNum = Math.random();
     randomNum = randomNum * 10;
     $("#userChoice").html(playerChoice);
@@ -29,7 +29,9 @@ $("#shoot").click(function(){
                 playerChoice == "Paper" && computerResult == "Scissor") {
 
         $("#result").html("Computer Wins!");
-    } else {
+    } else if(playerChoice != "rock" || playerChoice != "scissor" || playerChoice != "paper"){
+        $("#result").html("Not valid input!");
+    }else{
         $("#result").html("Draw!");
     }
 })
